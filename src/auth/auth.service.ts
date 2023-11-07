@@ -85,7 +85,7 @@ export class AuthService {
       usernameChanges: user.usernameChanges,
       savedPosts: user.savedPosts,
       isOAuthUser: user.isOAuthUser,
-      onboardingCompleted: user.onboardingCompleted,
+      isOnBoardingCompleted: user.isOnBoardingCompleted,
       isVerified: user.isVerified,
     };
 

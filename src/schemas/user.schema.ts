@@ -46,7 +46,7 @@ export class User extends Document {
   isOAuthUser: boolean;
 
   @Prop({ default: false })
-  onboardingCompleted: boolean;
+  isOnBoardingCompleted: boolean;
 
   @Prop({ default: false })
   isVerified: boolean;

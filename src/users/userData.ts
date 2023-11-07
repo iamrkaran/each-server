@@ -16,6 +16,6 @@ export type UserResponse = {
   usernameChanges: Array<{ username: string; changedDate: Date }>;
   savedPosts: Array<PostEntity>;
   isOAuthUser: boolean;
-  onboardingCompleted: boolean;
+  isOnBoardingCompleted: boolean;
   isVerified: boolean;
 };
