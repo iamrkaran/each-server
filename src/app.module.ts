@@ -11,6 +11,8 @@ import { RelationshipsModule } from './relationships/relationships.module';
 import { ExploreModule } from './explore/explore.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AwsS3Service } from './aws-s3/aws-s3.service';
+import { LikeModule } from './like/like.module';
+import { CommentModule } from './comment/comment.module';
 
 
 
@@ -28,6 +30,8 @@ import { AwsS3Service } from './aws-s3/aws-s3.service';
     FeedModule,
     RelationshipsModule,
     ExploreModule,
+    LikeModule,
+    CommentModule,
   ],
   controllers: [AppController],
   providers: [AppService, AwsS3Service],
