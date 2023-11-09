@@ -52,7 +52,7 @@ export class CreateUserDto {
   @ApiProperty()
   @IsOptional()
   @IsString()
-  readonly onboardingCompleted: boolean;
+  readonly isOnboardingCompleted: boolean;
 }
 
 export class UpdateUserDto {
@@ -99,5 +99,5 @@ export class UpdateUserDto {
   @ApiProperty()
   @IsOptional()
   @IsString()
-  readonly onboardingCompleted: boolean;
+  readonly isOnboardingCompleted: boolean;
 }

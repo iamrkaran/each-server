@@ -6,11 +6,13 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { PostsModule } from './posts/posts.module';
 import { MediaModule } from './media/media.module';
-import { LikesCommentsModule } from './likes-comments/likes-comments.module';
 import { FeedModule } from './feed/feed.module';
 import { RelationshipsModule } from './relationships/relationships.module';
 import { ExploreModule } from './explore/explore.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AwsS3Service } from './aws-s3/aws-s3.service';
+
+
 
 @Module({
   imports: [
@@ -23,12 +25,12 @@ import { MongooseModule } from '@nestjs/mongoose';
     UsersModule,
     PostsModule,
     MediaModule,
-    LikesCommentsModule,
     FeedModule,
     RelationshipsModule,
     ExploreModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AwsS3Service],
 })
 export class AppModule {} 
+ 

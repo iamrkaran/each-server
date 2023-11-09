@@ -52,5 +52,5 @@ export class SignUpDto {
   @ApiProperty()
   @IsOptional()
   @IsString()
-  readonly onboardingCompleted: boolean;
+  readonly isOnboardingCompleted: boolean;
 }
