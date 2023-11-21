@@ -13,6 +13,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AwsS3Service } from './aws-s3/aws-s3.service';
 import { LikeModule } from './like/like.module';
 import { CommentModule } from './comment/comment.module';
+import { DemoModule } from './demo/demo.module';
 
 
 
@@ -32,6 +33,7 @@ import { CommentModule } from './comment/comment.module';
     ExploreModule,
     LikeModule,
     CommentModule,
+    DemoModule,
   ],
   controllers: [AppController],
   providers: [AppService, AwsS3Service],

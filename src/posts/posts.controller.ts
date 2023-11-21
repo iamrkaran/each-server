@@ -21,6 +21,7 @@ import {
 } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { AwsS3Service } from 'src/aws-s3/aws-s3.service';
+import * as crypto from 'crypto';
 
 @Controller('posts')
 @ApiTags('posts')
@@ -84,19 +85,25 @@ export class PostsController {
     @UploadedFile() file: Express.Multer.File,
     @Body() createPostDto: CreatePostDto,
   ) {
+    const originalName = file.originalname;
+    const fileExtension = originalName.split('.').pop();
+    const hashedFileName = generateHash(originalName) + '.' + fileExtension;
+    
+    const hashedUser = generateHash(createPostDto.user.toString());
+
     const imageUrl = await this.awsS3Service.uploadImage(
       file,
-      file.originalname,
+      hashedFileName,
       file.mimetype,
+      hashedUser,
     );
 
     const newPostData = {
       user: createPostDto.user,
       caption: createPostDto.caption,
-      imageUrl: imageUrl, 
+      imageUrl: imageUrl,
     };
-  
-  
+
     const newPost = await this.postsService.create(newPostData);
 
     return newPost;
@@ -124,3 +131,7 @@ export class PostsController {
     return { message: 'Post deleted successfully' };
   }
 }
+
+const generateHash = (data: any) => {
+  return crypto.createHash('md5').update(data).digest('hex').slice(0, 16);
+};

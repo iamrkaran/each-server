@@ -15,11 +15,11 @@ export class AwsS3Service {
   }
 
 
-  async uploadImage(file:Express.Multer.File, filename: string, mimetype: string): Promise<string> {
-   
+  async uploadImage(file:Express.Multer.File, filename: string, mimetype: string,hashedUser:string): Promise<string> {
+    const folderPath = `${hashedUser}/`;
     const params = {
       Bucket: process.env.EACH_AWS_BUCKET_NAME,
-      Key: filename,
+      Key: folderPath + filename,
       Body: file.buffer,
       ACL: 'public-read',
       ContentType: mimetype,
