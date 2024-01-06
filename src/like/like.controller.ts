@@ -40,7 +40,7 @@ export class LikeController {
   }
 
   // Find likes by post ids
-  @Post('likes/batch')
+  @Post('batch')
   @ApiOperation({ summary: 'Find likes by post ids' })
   @ApiBody({
     type: [String],
