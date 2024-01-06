@@ -23,4 +23,10 @@ export class LikeService {
 
     await this.likeModel.findByIdAndDelete(existingLike._id).exec();
   }
+
+  async findAll(postId: string): Promise<Like[]> {
+    return this.likeModel.find({ postId }).exec();
+  }
+
+
 }
