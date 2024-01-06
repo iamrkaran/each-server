@@ -28,5 +28,12 @@ export class LikeService {
     return this.likeModel.find({ postId }).exec();
   }
 
+  async findAllByIds(postIds: string[]): Promise<Like[]> {
+    // Fetch all likes for the specified postIds
+    const likes = await this.likeModel.find({ postId: { $in: postIds } }).exec();
+    
+    // Filter likes based on postIds
+    return likes.filter((like) => postIds.includes(like.postId.toString()));
+  }
 
 }

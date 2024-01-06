@@ -38,4 +38,23 @@ export class LikeController {
   async findAll(@Param('postId') postId: string): Promise<Like[]> {
     return this.likeService.findAll(postId);
   }
+
+  // Find likes by post ids
+  @Post('likes/batch')
+  @ApiOperation({ summary: 'Find likes by post ids' })
+  @ApiBody({
+    type: [String],
+    description: 'Post IDs',
+    isArray: true,
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'The likes have been successfully found.',
+    type: [Like],
+  })
+  async findAllByIds(@Body() postIds: string[]): Promise<Like[]> {
+    return this.likeService.findAllByIds(postIds);
+  }
+
+
 }
